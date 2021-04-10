@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="theme-color" content="#000000">
+
+    <title>Crisis Dashboard</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        hr{
+        height: 3px;
+        background-color: rgb(0, 255, 0);
+        border: none;
+        }
+    </style>
+    
+</head>
+
+<body style="color: rgb(0, 255, 0);" onload=display_ct();>
+    <div class="row p-5">
+        <div class="col-md-5 ml-3">
+            <p>SECURE ACCESS<b><span id="cursor">...</span></b>  LakeMUN Delegate Terminal</p>
+            <p><div class="bg-dark"><u><b><span id='ct' ></span></b></u></div></p>
+            <p>Delegate/Access ?>> https://crisis.lakemun.com</p>
+            
+            <hr>
+            
+            <p>*CONTROL PANEL*</p>
+            <ul>
+                <li><a href="https://eanesisd.zoom.us/j/85956695155" target="_blank">[Initiate *ZOOM* Committee Video Uplink]</a></li>
+                <li><a href="https://dialogue.lakemun.com" target="_blank">[Communicate via *DIALOGUE* Chat Protocol]</a></li>
+                <li><a href="https://forms.gle/2ot6PtfYxMhHorGr6" target="_blank">[Submit Action Orders]</a></li>
+                <li><a href="https://lakemun.com/Delegate_Handbook.pdf" target="_blank">[Consult Delegate Handbook]</a></li>
+                <li><a href="https://lakemun.com/background-guides/CRISIS_Libyan_Civil_War.pdf" target="_blank">[View Background Guide]</a></li>
+            </ul>
+    
+            <hr>
+    
+            <p>*INTELLIGENCE*</p>
+            <p><a href="#" class="btn-link" onclick="showMap()" id="requestMap">[Show latest progress map from CRISIS-SIGINT]</a></p>
+    
+            <hr>
+    
+            <p>*STATUS REPORT(S)*</p>
+            <div class="bg-dark p-2 mb-3">
+                <p>2014-07-13<br>Emergency Bulletin: SITUATION IN LIBYA</p>
+                <p>Tripoli Int'l Airport Seized. GNC & HoR Established in Tripoli, Tobruk, Resp. Advise ALL Foreign Nationals to Evacuate. Convene CRISIS-COM ASAP.</p>
+            </div>
+
+            
+        </div>
+
+        <div class="col-md">
+            <div id="map" class="map text-center" style="display: none;">
+                <img src="map.svg" alt="" height="500">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="https://lakemun.com" target="_blank">>> Reconnect to Main Site</a>
+        </div>
+    </footer>
+    <script type="text/javascript"> 
+        // toggle map display
+        function showMap() {
+            var x = document.getElementById("map");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        // display simulation time
+        function display_c(){
+            var refresh=1000; // Refresh rate in milli seconds
+            mytime=setTimeout('display_ct()',refresh)
+        }
+        function display_ct() {
+            var x = new Date()
+            var y = new Date(x - 60000*60*24*351*7);
+            document.getElementById('ct').innerHTML = y;
+            display_c();
+        }
+
+        // blinking SECURE ACCESS...
+        var cursor = true;
+        var speed =2000;
+        setInterval(() => {
+        if(cursor) {
+            document.getElementById('cursor').style.opacity = 0;
+            cursor = false;
+        }else {
+            document.getElementById('cursor').style.opacity = 1;
+            cursor = true;
+        }
+        }, speed);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
